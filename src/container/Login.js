@@ -1,4 +1,5 @@
 import React, { Component, useState } from 'react'
+import { Container, Row, Col } from 'reactstrap'
 import { gql } from 'apollo-boost'
 import { Query } from 'react-apollo'
 import { useCookies } from 'react-cookie'
@@ -45,36 +46,53 @@ export default function Login () {
   const [password, setPassword] = useState('')
   return (
     <MuiThemeProvider theme={theme}>
-      <div className='login-main'>
+      <Container className='login-main'>
+        {/* <div className='login-main'> */}
+        <Row>
+          <Col xs={{size: 10, offset: 1}} md='6' lg={{size: 4, offset: 4}}>
+            <TextField
+              fullWidth
+              className={'text-field'}
+              id='outlined-name'
+              label='Email'
+              margin='normal'
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              variant='outlined'
+        />
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={{size: 10, offset: 1}} md='6' lg={{size: 4, offset: 4}}>
+            <TextField
+              fullWidth
+              className={'text-field'}
+              id='outlined-name'
+              label='Password'
+              value={password}
+              type='Password'
+              onChange={(event) => setPassword(event.target.value)}
+              margin='normal'
+              variant='outlined'
+        />
+          </Col>
+        </Row>
 
-        <TextField
-          className={'text-field'}
-          id='outlined-name'
-          label='Email'
-          margin='normal'
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-          variant='outlined'
-        />
-        <TextField
-          className={'text-field'}
-          id='outlined-name'
-          label='Password'
-          value={password}
-          type='Password'
-          onChange={(event) => setPassword(event.target.value)}
-          margin='normal'
-          variant='outlined'
-        />
-        <Button
-          className={'text-field button-field'}
-          color='primary'
-          onClick={() => LoginPressed(email, password)}
-          variant='outlined' >
+        <Row>
+          <Col xs={{size: 10, offset: 1}} md='6' lg={{size: 4, offset: 4}}>
+            <Button
+              className={'text-field button-field'}
+              fullWidth
+              color='primary'
+              onClick={() => LoginPressed(email, password)}
+              variant='outlined' >
           Login
           </Button>
+          </Col>
+        </Row>
 
-      </div>
+        {/* </div> */}
+      </Container>
     </MuiThemeProvider>
   )
 }

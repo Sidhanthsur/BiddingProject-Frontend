@@ -1,6 +1,6 @@
 .login-main {
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     height: 100%;
     width: 100%;
     flex: 1;
@@ -16,3 +16,4 @@
 .button-field {
     margin-top: 50px;
 }
+
