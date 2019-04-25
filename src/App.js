@@ -1,28 +1,22 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import './App.css'
+import LaunchScreen from './container/LaunchScreen'
+import ApolloClient from 'apollo-boost'
+import { ApolloProvider } from 'react-apollo'
+import { CookiesProvider } from 'react-cookie'
+console.log(process.env.REACT_APP_ENDPOINT)
+const client = new ApolloClient({ uri: process.env.REACT_APP_ENDPOINT })
 
 class App extends Component {
-  render() {
+  render () {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+      <ApolloProvider client={client}>
+        <CookiesProvider>
+          <LaunchScreen />
+        </CookiesProvider>
+      </ApolloProvider>
+    )
   }
 }
 
-export default App;
+export default App
