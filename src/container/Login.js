@@ -6,7 +6,7 @@ import { useCookies } from 'react-cookie'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import Progress from '../components/Progress'
-
+import { Route, Redirect } from 'react-router'
 import './styles/LoginStyle.css'
 
 
@@ -28,9 +28,13 @@ export default function Login () {
   const [cookies, setCookie] = useCookies('accessToken')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [signUpPressed, setSignup] = useState(false)
+  if (signUpPressed) {
+    return <Redirect to='/signup' />
+  }
   return (
    
-   
+
       <Container className='login-main'>
         {/* <div className='login-main'> */}
 
@@ -92,6 +96,13 @@ export default function Login () {
           }
            </Mutation>
            
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={{size: 10, offset: 1}} md='6' lg={{size: 4, offset: 4}}>
+          <a href='/signup'>
+          <h5 style={{ textAlign: 'center', marginTop: 24, color: 'white'}}>New User ?</h5>
+          </a>
           </Col>
         </Row>
 
