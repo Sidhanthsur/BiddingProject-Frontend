@@ -1,51 +1,36 @@
-import React, { Component, useState } from 'react'
+import React, { useState } from 'react'
 import { Container, Row, Col } from 'reactstrap'
-import { gql } from 'apollo-boost'
-import { Query } from 'react-apollo'
+import  { gql } from 'apollo-boost'
+import { Mutation } from 'react-apollo'
 import { useCookies } from 'react-cookie'
-import Input from '@material-ui/core/Input'
 import TextField from '@material-ui/core/TextField'
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
+import Progress from '../components/Progress'
+
 import './styles/LoginStyle.css'
 
-const theme = createMuiTheme({
-  palette: {
-    type: 'dark', // Switching the dark mode on is a single property value change.
-    primary: {
-      main: '#32B515'
-    }
-  },
-  overrides: {
-    MuiButton: {
-      text: {
-        // Some CSS
-        background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-        borderRadius: 3,
-        border: 0,
-        color: 'white',
-        height: 48,
-        padding: '0 30px',
-        boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)'
-      },
-      outlined: {
-        marginTop: 20
-      }
+
+const LOGIN_MUTATION = gql`
+mutation LoginMutation($email: String!, $password: String!) {
+  login (email: $email, password: $password) {
+    token
+    user {
+      id
+      name
+      email
     }
   }
-
-})
-
-function LoginPressed (email, password) {
-  console.log(email, password)
 }
+`
+
 
 export default function Login () {
   const [cookies, setCookie] = useCookies('accessToken')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   return (
-    <MuiThemeProvider theme={theme}>
+   
+   
       <Container className='login-main'>
         {/* <div className='login-main'> */}
 
@@ -82,19 +67,37 @@ export default function Login () {
 
         <Row>
           <Col xs={{size: 10, offset: 1}} md='6' lg={{size: 4, offset: 4}}>
-            <Button
+          <Mutation
+      mutation={LOGIN_MUTATION}
+      variables={{ email, password }}
+      onCompleted={data => console.log(JSON.stringify(data, undefined,2))}
+      onError={error => console.log(error)}
+      loading={loading => console.log(loading)}
+      >
+          {
+            (mutation, {loading, error}) => (
+              <div>
+              {loading && <Progress />}
+              <Button
               className={'text-field button-field'}
               fullWidth
               color='primary'
-              onClick={() => LoginPressed(email, password)}
+              onClick={mutation}
               variant='outlined' >
           Login
           </Button>
+          </div>
+            )
+            
+          }
+           </Mutation>
+           
           </Col>
         </Row>
 
         {/* </div> */}
       </Container>
-    </MuiThemeProvider>
+
+   
   )
 }
