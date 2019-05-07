@@ -35,12 +35,12 @@ export default function Login () {
   return (
    
 
-      <Container className='login-main'>
+      <Container fluid className='login-main'>
         {/* <div className='login-main'> */}
 
         <span className={'login-title'}>Hello !</span>
         <Row>
-          <Col xs={{size: 10, offset: 1}} md='6' lg={{size: 4, offset: 4}}>
+        <Col xs={{size: 10, offset: 1}} md={{size: 8, offset: 2}} lg={{size: 4, offset: 4}}  xl={{size: 4, offset: 4}}>
             <TextField
               fullWidth
               className={'text-field'}
@@ -54,7 +54,7 @@ export default function Login () {
           </Col>
         </Row>
         <Row>
-          <Col xs={{size: 10, offset: 1}} md='6' lg={{size: 4, offset: 4}}>
+        <Col xs={{size: 10, offset: 1}} md={{size: 8, offset: 2}} lg={{size: 4, offset: 4}}  xl={{size: 4, offset: 4}}>
             <TextField
               fullWidth
               className={'text-field'}
@@ -70,7 +70,7 @@ export default function Login () {
         </Row>
 
         <Row>
-          <Col xs={{size: 10, offset: 1}} md='6' lg={{size: 4, offset: 4}}>
+        <Col xs={{size: 10, offset: 1}} md={{size: 8, offset: 2}} lg={{size: 4, offset: 4}}  xl={{size: 4, offset: 4}}>
           <Mutation
       mutation={LOGIN_MUTATION}
       variables={{ email, password }}
@@ -99,7 +99,7 @@ export default function Login () {
           </Col>
         </Row>
         <Row>
-          <Col xs={{size: 10, offset: 1}} md='6' lg={{size: 4, offset: 4}}>
+        <Col xs={{size: 10, offset: 1}} md={{size: 8, offset: 2}} lg={{size: 4, offset: 4}}  xl={{size: 4, offset: 4}}>
           <a href='/signup'>
           <h5 style={{ textAlign: 'center', marginTop: 24, color: 'white'}}>New User ?</h5>
           </a>

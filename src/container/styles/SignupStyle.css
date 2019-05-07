@@ -1,0 +1,10 @@
+.signup-main {
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    margin: 0;
+}
