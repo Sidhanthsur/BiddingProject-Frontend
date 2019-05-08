@@ -1,3 +1,5 @@
+
+
 .signup-main {
     justify-content: center;
     height: 100%;
@@ -7,4 +9,12 @@
     flex-direction: column;
     background-color: black;
     margin: 0;
+}
+
+.signup-error-dialog {
+    background: black;
+    border-color: '#32B515';
+    border-width: 2px;
+    border-radius: 4px;
+
 }

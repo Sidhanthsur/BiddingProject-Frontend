@@ -30,6 +30,16 @@ const theme = createMuiTheme({
       outlined: {
         marginTop: 20
       }
+    },
+    MuiDialog: {
+      container: {
+        backgroundColor: '#80000000'
+      },
+      paperScrollPaper: {
+        backgroundColor: '#292b30',
+        borderColor: 'white',
+        borderWidth: 2
+      },
     }
   }
 
