@@ -7,6 +7,7 @@ import { CookiesProvider } from 'react-cookie'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Signup from './container/Signup'
+import Home from './container/Home'
 
 const theme = createMuiTheme({
   palette: {
@@ -47,17 +48,18 @@ const theme = createMuiTheme({
 const client = new ApolloClient({ uri: process.env.REACT_APP_ENDPOINT })
 
 class App extends Component {
-  render () {
+  render() {
     return (
       <ApolloProvider client={client}>
-       <MuiThemeProvider theme={theme}>
-        <CookiesProvider>
-          <Router>
-            <Route path='/' exact component={LaunchScreen} />
-            <Route path='/signup' exact component={Signup} />
-          </Router>
-          {/* <LaunchScreen /> */}
-        </CookiesProvider>
+        <MuiThemeProvider theme={theme}>
+          <CookiesProvider>
+            <Router>
+              <Route path='/' exact component={LaunchScreen} />
+              <Route path='/signup' exact component={Signup} />
+              <Route path='/home' component={Home} />
+            </Router>
+            {/* <LaunchScreen /> */}
+          </CookiesProvider>
         </MuiThemeProvider>
       </ApolloProvider>
     )
